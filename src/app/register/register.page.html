@@ -1,0 +1,59 @@
+<ion-content class="register-content">
+    <div class="register-container">
+  
+      <h1 class="register-title">Crear cuenta</h1>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Nombre"
+        type="text"
+        [(ngModel)]="nombre"
+      ></ion-input>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Apellido"
+        type="text"
+        [(ngModel)]="apellido"
+      ></ion-input>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Correo electrónico"
+        type="email"
+        [(ngModel)]="correo"
+      ></ion-input>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Teléfono"
+        type="tel"
+        [(ngModel)]="telefono"
+      ></ion-input>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Contraseña"
+        type="password"
+        [(ngModel)]="password"
+      ></ion-input>
+  
+      <ion-input
+        class="custom-input"
+        placeholder="Confirmar contraseña"
+        type="password"
+        [(ngModel)]="confirmarPassword"
+      ></ion-input>
+  
+      <ion-text color="danger" class="error-message">{{ mensaje }}</ion-text>
+  
+      <ion-button expand="block" class="register-button" (click)="registrar()">
+        Registrarse
+      </ion-button>
+  
+      <div class="bottom-text">
+        <p>¿Ya tienes cuenta? <span (click)="irALogin()">Inicia sesión</span></p>
+      </div>
+    </div>
+  </ion-content>
+  

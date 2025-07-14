@@ -1,0 +1,75 @@
+.login-content {
+    background: radial-gradient(circle at top, #111926, #0d1117, #05080c);
+    min-height: 100%;
+  }
+  
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .titulo {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  .custom-item {
+    --background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+  }
+  
+  ion-input.custom-input {
+    --color: #000000;
+    font-size: 1rem;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+    color: #aab4c1;
+    font-size: 0.9rem;
+  }
+  
+  .custom-button {
+    --background: #1e3a5f;
+    --border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .mensaje-error {
+    font-size: 0.95rem;
+    color: #ff6b6b;
+  }
+  
+  .registro {
+    font-size: 0.95rem;
+    color: #aab4c1;
+  
+    a {
+      color: #ffffff;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  
+  .marca {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: #cdd4e0;
+    font-weight: 600;
+  }
+  

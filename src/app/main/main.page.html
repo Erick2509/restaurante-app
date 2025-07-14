@@ -1,0 +1,42 @@
+<ion-menu content-id="main-content" side="start" menu-id="main-menu" class="custom-menu">
+    <ion-header>
+      <ion-toolbar class="menu-toolbar">
+        <ion-title class="menu-title">Menú</ion-title>
+        <ion-label class="user-name">👋 Hola, {{ nombreUsuario }}</ion-label>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list lines="none">
+        <ion-item routerLink="/perfil" routerDirection="root" class="menu-item">👤 Ver Perfil</ion-item>
+        <ion-item routerLink="/platos" routerDirection="root" class="menu-item">🍽 Platos</ion-item>
+        <ion-item routerLink="/carrito" routerDirection="root" class="menu-item">🛒 Carrito</ion-item>
+        <ion-item routerLink="/mis-pedidos" routerDirection="root" class="menu-item">🧾 Mis pedidos</ion-item>
+        <ion-item (click)="logout()" class="menu-item logout">🔓 Cerrar sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-header class="app-header">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+  
+      <ion-title class="app-title">Restaurante</ion-title>
+  
+      <ion-buttons slot="end">
+        <ion-button routerLink="/carrito">
+          <ion-icon name="cart" slot="icon-only"></ion-icon>
+          <ion-badge *ngIf="totalCarrito > 0" color="danger" class="carrito-badge">
+            {{ totalCarrito }}
+          </ion-badge>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content id="main-content">
+    <router-outlet></router-outlet>
+  </ion-content>
+  

@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/mis-pedidos"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Detalle del Pedido #{{ pedidoId }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding" style="--background: #111; color: #fff">
+    <div style="text-align: center; margin-top: 20px">
+      <ion-icon
+        name="checkmark-circle"
+        color="success"
+        style="font-size: 3rem"
+      ></ion-icon>
+      <p>Tu pedido fue registrado exitosamente.</p>
+    </div>
+  
+    <ion-card style="background-color: #1e1e1e; color: #fff">
+      <ion-card-header>
+        <ion-card-title>Resumen del Pedido</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none" style="--background: transparent">
+          <ion-label>
+            <p><strong>Número de Pedido:</strong> {{ pedidoId }}</p>
+            <p>
+              <strong>Tipo de Entrega:</strong>
+              {{ tipoEntrega === 'llevar' ? 'Para llevar' : 'En local' }}
+            </p>
+          </ion-label>
+        </ion-item>
+  
+        <ion-list *ngIf="detalle.length > 0">
+          <ion-item
+            *ngFor="let item of detalle"
+            style="--background: transparent"
+          >
+            <ion-label>
+              <h3>{{ item.nombre }}</h3>
+              <p>Cantidad: {{ item.cantidad }}</p>
+              <p>Precio Unitario: S/ {{ (+item.precio).toFixed(2) }}</p>
+              <p>
+                <strong>Subtotal:</strong> S/
+                {{ (+item.precio * item.cantidad).toFixed(2) }}
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+  
+        <!-- IGV y totales -->
+        <ion-item
+          lines="none"
+          style="--background: transparent"
+          class="ion-text-end"
+        >
+          <ion-label>
+            <p><strong>Valor de venta:</strong></p>
+            <p><strong>IGV (18%):</strong></p>
+            <p style="margin-top: 8px"><strong>Total a pagar:</strong></p>
+          </ion-label>
+          <ion-label slot="end" class="ion-text-right">
+            <p>S/ {{ (total / 1.18).toFixed(2) }}</p>
+            <p>S/ {{ (total - (total / 1.18)).toFixed(2) }}</p>
+            <p style="margin-top: 8px; color: #2196f3; font-weight: bold">
+              S/ {{ total.toFixed(2) }}
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

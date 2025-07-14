@@ -1,0 +1,26 @@
+<ion-card *ngFor="let pedido of pedidos" [ngClass]="getCardClass(pedido.estado)">
+    <ion-card-header>
+      <ion-card-title>Pedido #{{ pedido.id }}</ion-card-title>
+      <ion-card-subtitle>
+        <strong>Estado:</strong> <span [ngClass]="getEstadoClass(pedido.estado)">
+          {{ pedido.estado | titlecase }}
+        </span>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Total:</strong> S/ {{ pedido.total }}</p>
+      <p><strong>Método de pago:</strong> {{ pedido.metodo_pago | titlecase }}</p>
+      <p><strong>Tipo de entrega:</strong> {{ pedido.tipo_entrega | titlecase }}</p>
+      <ion-button
+        expand="block"
+        fill="solid"
+        size="small"
+        shape="round"
+        [color]="getColorPorEstado(pedido.estado)"
+        [routerLink]="['/detalle-pedido', pedido.id]"
+      >
+        Ver Detalle
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  

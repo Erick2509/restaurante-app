@@ -1,0 +1,58 @@
+.platos-content {
+    --background: linear-gradient(to bottom, #0f1113, #1c1f22);
+    padding: 15px;
+    color: #fff;
+  }
+  
+  .platos-header {
+    text-align: center;
+    margin-bottom: 15px;
+  
+    h1 {
+      font-size: 1.8rem;
+      color: #e0e0e0;
+    }
+  }
+  
+  .plato-card {
+    --background: #2a2d32;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 10px 15px;
+  
+    h2 {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin: 0;
+    }
+  
+    p {
+      font-size: 0.95rem;
+      color: #bbb;
+      margin: 5px 0;
+    }
+  
+    strong {
+      color: #00b4d8;
+      font-weight: bold;
+    }
+  }
+  
+  .no-data {
+    text-align: center;
+    margin-top: 40px;
+  
+    p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+  }
+  .imagen-plato {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  

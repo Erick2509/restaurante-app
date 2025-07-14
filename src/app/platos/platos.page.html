@@ -1,0 +1,27 @@
+<ion-content class="platos-content">
+    <div class="platos-header">
+      <h1>Platos Disponibles</h1>
+    </div>
+  
+    <ion-list *ngIf="platos.length > 0; else noData">
+      <ion-item *ngFor="let plato of platos" (click)="verDetalle(plato)" class="plato-card">
+        <ion-thumbnail slot="start">
+          <ion-img [src]="plato.imagenUrl || 'assets/img/no-img.jpg'"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ plato.nombre }}</h2>
+          <p>{{ plato.descripcion }}</p>
+          <strong>S/. {{ plato.precio }}</strong>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  
+    <ng-template #noData>
+      <div class="no-data">
+        <ion-text color="light">
+          <p>No se encontraron platos.</p>
+        </ion-text>
+      </div>
+    </ng-template>
+  </ion-content>
+  

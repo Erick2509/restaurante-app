@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+  
+    <ion-list *ngIf="carrito.length > 0; else sinPlatos">
+      <ion-item *ngFor="let item of carrito">
+        <ion-thumbnail slot="start">
+          <img [src]="item.imagenUrl || 'assets/img/plato-default.png'" />
+        </ion-thumbnail>
+  
+        <ion-label class="ion-text-wrap">
+          <h2>{{ item.nombre }}</h2>
+          <p>Precio unitario: S/ {{ item.precio }}</p>
+  
+          <ion-row class="ion-align-items-center">
+            <ion-col size="auto">
+              <ion-button size="small" fill="outline" (click)="disminuir(item.id)">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="auto">
+              <strong>{{ item.cantidad }}</strong>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button size="small" fill="outline" (click)="incrementar(item.id)">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+  
+          <p><strong>Subtotal: S/ {{ item.precio * (item.cantidad || 1) }}</strong></p>
+        </ion-label>
+  
+        <ion-button slot="end" color="danger" fill="clear" (click)="eliminarDelCarrito(item.id)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  
+    <ng-template #sinPlatos>
+      <ion-text color="medium">
+        <p class="ion-text-center">🛒 Tu carrito está vacío.</p>
+      </ion-text>
+    </ng-template>
+  
+    <!-- Total -->
+    <ion-item *ngIf="carrito.length > 0">
+      <ion-label><strong>Total</strong></ion-label>
+      <ion-note slot="end"><strong>S/ {{ total.toFixed(2) }}</strong></ion-note>
+    </ion-item>
+  
+    <!-- Tipo de entrega -->
+    <ion-item>
+      <ion-label>Tipo de entrega</ion-label>
+      <ion-select [(ngModel)]="tipoEntrega" placeholder="Seleccionar" (ionChange)="onTipoEntregaChange()">
+        <ion-select-option value="llevar">Para llevar</ion-select-option>
+        <ion-select-option value="local">Comer en el local</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <!-- Selección de mesa y mozo si es en local -->
+    <div *ngIf="tipoEntrega === 'local'">
+      <ion-item>
+        <ion-label>Mesa</ion-label>
+        <ion-select [(ngModel)]="mesaSeleccionada" placeholder="Seleccionar mesa">
+          <ion-select-option *ngFor="let mesa of mesas" [value]="mesa.id">
+            Mesa {{ mesa.numero }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Mozo</ion-label>
+        <ion-select [(ngModel)]="mozoSeleccionado" placeholder="Seleccionar mozo">
+          <ion-select-option *ngFor="let mozo of mozos" [value]="mozo.id">
+            {{ mozo.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  
+    <!-- Método de pago -->
+    <ion-item>
+      <ion-label>Método de pago</ion-label>
+      <ion-select [(ngModel)]="metodoPago" placeholder="Seleccionar">
+        <ion-select-option value="efectivo">Efectivo</ion-select-option>
+        <ion-select-option value="tarjeta">Tarjeta</ion-select-option>
+        <ion-select-option value="yape">Yape</ion-select-option>
+        <ion-select-option value="plin">Plin</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <!-- Confirmar pedido -->
+    <ion-button expand="block" color="success" (click)="confirmarPedido()" [disabled]="carrito.length === 0">
+      Confirmar Pedido
+    </ion-button>
+  
+  </ion-content>
+  

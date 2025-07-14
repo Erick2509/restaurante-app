@@ -1,0 +1,57 @@
+<ion-content class="login-content">
+    <div class="login-container">
+      <h1 class="titulo">Iniciar Sesión</h1>
+  
+      <form #loginForm="ngForm" (ngSubmit)="ingresar(loginForm)">
+        <!-- Correo -->
+        <ion-item lines="none" class="custom-item">
+          <ion-input
+            type="email"
+            placeholder="Correo Electrónico"
+            [(ngModel)]="correo"
+            name="correo"
+            required
+            email
+            class="custom-input"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.submitted && loginForm.form.controls['correo']?.invalid">
+          <p class="mensaje-error">Ingresa un correo válido</p>
+        </ion-text>
+  
+        <!-- Contraseña -->
+        <ion-item lines="none" class="custom-item">
+          <ion-input
+            type="password"
+            placeholder="Contraseña"
+            [(ngModel)]="password"
+            name="password"
+            required
+            minlength="6"
+            class="custom-input"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.submitted && loginForm.form.controls['password']?.invalid">
+          <p class="mensaje-error">Ingresa una contraseña (mínimo 6 caracteres)</p>
+        </ion-text>
+  
+        <!-- Botón -->
+        <ion-button expand="block" class="custom-button" type="submit">
+          Ingresar
+        </ion-button>
+      </form>
+  
+      <!-- Mensaje de error general -->
+      <ion-text color="danger" *ngIf="mensaje">
+        <p class="mensaje-error">{{ mensaje }}</p>
+      </ion-text>
+  
+      <!-- Enlace a registro -->
+      <div class="registro">
+        <p>No tienes una cuenta? <a (click)="irARegistro()">Regístrate</a></p>
+      </div>
+  
+      <div class="marca">Restaurante</div>
+    </div>
+  </ion-content>
+  
